@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/hu.bme.aut.procurementofmaterials.model/src"
+    modelPluginID="hu.bme.aut.procurementofmaterials.model" modelName="Model" rootExtendsInterface="org.eclipse.emf.cdo.CDOObject"
+    rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl" reflectiveDelegation="true"
+    importerID="org.eclipse.emf.importer.cdo" featureDelegation="Reflective" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>model/model.ecore</foreignModel>
+  <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
+  <genPackages prefix="Model" disposableProviderFactory="true" ecorePackage="model.ecore#/">
+    <genClasses ecoreClass="model.ecore#//Fixture">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Fixture/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Fixture/price"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Fixture/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Fixture/acquisitionTime"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//ComplexFixture">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ComplexFixture/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ComplexFixture/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//ComplexFixture/fixtures"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//FinishedProduct">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//FinishedProduct/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//FinishedProduct/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//FinishedProduct/fixtures"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//FinishedProduct/complexFixtures"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//FinishedProduct/productionTree"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//FinishedProduct/hasProductionTree"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//ProductionTarget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ProductionTarget/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ProductionTarget/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ProductionTarget/deadline"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//ProductionTarget/finishedProducts"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//MaterialsModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//MaterialsModel/fixtures"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//MaterialsModel/complexFixtures"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//MaterialsModel/finishedProducts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//MaterialsModel/productionTargets"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//FixtureWithNumber">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//FixtureWithNumber/numbers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//FixtureWithNumber/fixtureID"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//ComplexFixtureWithNumber">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ComplexFixtureWithNumber/numbers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ComplexFixtureWithNumber/complexFixtureID"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//FinishedPorductWIthNumber">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//FinishedPorductWIthNumber/number"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//FinishedPorductWIthNumber/finisshedProductID"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//ProductionTree">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ProductionTree/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ProductionTree/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

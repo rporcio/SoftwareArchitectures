@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="procurementofmaterials" uid="procurementofmaterials" id="hu.bme.aut.procurementofmaterials.product" application="hu.bme.aut.procurementofmaterials.application" version="1.0" useFeatures="true" includeLaunchers="true">
+
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/hu.bme.aut.procurementofmaterials/icons/icon_16.png" i32="/hu.bme.aut.procurementofmaterials/icons/icon_32.png" i48="/hu.bme.aut.procurementofmaterials/icons/icon_48.png" i64="/hu.bme.aut.procurementofmaterials/icons/icon_64.png" i128="/hu.bme.aut.procurementofmaterials/icons/icon_128.png"/>
+
+   <splash
+      handlerType="interactive" />
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+   </vm>
+
+   <plugins>
+      <plugin id="hu.bme.aut.procurementofmaterials"/>
+   </plugins>
+
+   <features>
+      <feature id="hu.bme.aut.procurementofmaterials.feature" version="1.0.0.qualifier"/>
+   </features>
+
+   <configurations>
+      <plugin id="hu.bme.aut.procurementofmaterials" autoStart="false" startLevel="0" />
+   </configurations>
+
+</product>

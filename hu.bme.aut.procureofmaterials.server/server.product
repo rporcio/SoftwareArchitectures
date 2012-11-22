@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="CdoServer" id="hu.bme.aut.procureofmaterials.server.product" application="hu.bme.aut.procureofmaterials.server.application" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="hu.bme.aut.procureofmaterials.server.feature" version="1.0.0.qualifier"/>
+   </features>
+
+
+</product>

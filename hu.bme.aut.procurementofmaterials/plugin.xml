@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="hu.bme.aut.procurementofmaterials.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="Perspective"
+            class="hu.bme.aut.procurementofmaterials.Perspective"
+            id="hu.bme.aut.procurementofmaterials.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="hu.bme.aut.procurementofmaterials.view.SupplierFixturesView"
+            icon="icons/wrench.png"
+            id="hu.bme.aut.procurementofmaterials.supplierfixturesview"
+            name="Fixtures"
+            restorable="true">
+      </view>
+      <view
+            class="hu.bme.aut.procurementofmaterials.view.SupplierPurchaseListView"
+            icon="icons/clipboard-list.png"
+            id="hu.bme.aut.procurementofmaterials.supplierpurchaselistview"
+            name="Purchase list"
+            restorable="true">
+      </view>
+      <view
+            class="hu.bme.aut.procurementofmaterials.view.ProducerComplexFixtureView"
+            icon="icons/gear.png"
+            id="hu.bme.aut.procurementofmaterials.producercomplexfixtureview"
+            name="Complex fixtures"
+            restorable="true">
+      </view>
+      <view
+            class="hu.bme.aut.procurementofmaterials.view.ProducerFinishedProductView"
+            icon="icons/stamp.png"
+            id="hu.bme.aut.procurementofmaterials.producerfinishedporductsview"
+            name="Finished products"
+            restorable="true">
+      </view>
+      <view
+            class="hu.bme.aut.procurementofmaterials.view.ManagerProductionTargetView"
+            icon="icons/task.png"
+            id="hu.bme.aut.procurementofmaterials.managerproductiontargetview"
+            name="Production targets"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="hu.bme.aut.procurementofmaterials.toolbar">
+            <command
+                  commandId="hu.bme.aut.procurementofmaterials.newFixture"
+                  icon="icons/wrench--plus.png"
+                  label="New fixture"
+                  style="push">
+            </command>
+            <command
+                  commandId="hu.bme.aut.procurementofmaterials.newComplexFixture"
+                  icon="icons/gear--plus.png"
+                  label="New complex fixture"
+                  style="push">
+            </command>
+            <command
+                  commandId="hu.bme.aut.procurementofmaterials.newFinsihedProduct"
+                  icon="icons/stamp--plus.png"
+                  label="New finished product"
+                  style="push">
+            </command>
+            <command
+                  commandId="hu.bme.aut.procurementofmaterials.newProductionTarget"
+                  icon="icons/task--plus.png"
+                  label="New production target"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.file.save"
+                  label="Save content"
+                  style="push">
+            </command>
+            <command
+                  commandId="hu.bme.aut.procurementofmaterials.deleteMaterial"
+                  icon="icons/minus.png"
+                  label="Remove component"
+                  style="push">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="hu.bme.aut.procurementofmaterials.application"
+            name="procurementofmaterials">
+         <property
+               name="appName"
+               value="procurementofmaterials">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/icon_16.png,icons/icon_32.png,icons/icon_48.png,icons/icon_64.png,icons/icon_128.png">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="hu.bme.aut.procurementofmaterials.splashHandlers.InteractiveSplashHandler"
+            id="hu.bme.aut.procurementofmaterials.splashHandlers.interactive">
+      </splashHandler>
+      <splashHandlerProductBinding
+            productId="hu.bme.aut.procurementofmaterials.product"
+            splashId="hu.bme.aut.procurementofmaterials.splashHandlers.interactive">
+      </splashHandlerProductBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="hu.bme.aut.procurementofmaterials.editor.SupplierFixtureEditor"
+            default="false"
+            icon="icons/user-worker.png"
+            id="hu.bme.aut.procurementofmaterials.suppliereditor"
+            name="Fixture">
+      </editor>
+      <editor
+            class="hu.bme.aut.procurementofmaterials.editor.ProducerComplexFixtureEditor"
+            default="false"
+            icon="icons/user-worker-boss.png"
+            id="hu.bme.aut.procurementofmaterials.producercomplexfixtureeditor"
+            name="Complex fixture">
+      </editor>
+      <editor
+            class="hu.bme.aut.procurementofmaterials.editor.ProducerFinishedProductEditor"
+            default="false"
+            icon="icons/user-worker-boss.png"
+            id="hu.bme.aut.procurementofmaterials.producerfinishedproducteditor"
+            name="Finished product editor">
+      </editor>
+      <editor
+            class="hu.bme.aut.procurementofmaterials.editor.ManagerProductionTargetEditor"
+            default="false"
+            icon="icons/user-business.png"
+            id="hu.bme.aut.procurementofmaterials.managerproductiontargeteditor"
+            name="Production target editor">
+      </editor>
+      <editor
+            class="hu.bme.aut.procurementofmaterials.editor.SupplierPurchaseListEditor"
+            default="false"
+            icon="icons/user-worker.png"
+            id="hu.bme.aut.procurementofmaterials.supplierpurchaselisteditor"
+            name="Purchase list">
+      </editor>
+      <editor
+            class="hu.bme.aut.procurementofmaterials.editor.ProducerProductionTreeEditor"
+            default="false"
+            icon="icons/user-worker-boss.png"
+            id="hu.bme.aut.procurementofmaterials.producerproductiontreeeditor"
+            name="Production tree">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="hu.bme.aut.procurementofmaterials.newFixture"
+            name="New fixture">
+      </command>
+      <command
+            id="hu.bme.aut.procurementofmaterials.newComplexFixture"
+            name="New complex fixture">
+      </command>
+      <command
+            id="hu.bme.aut.procurementofmaterials.newFinsihedProduct"
+            name="New finished product">
+      </command>
+      <command
+            id="hu.bme.aut.procurementofmaterials.newProductionTarget"
+            name="New production target">
+      </command>
+      <command
+            id="hu.bme.aut.procurementofmaterials.deleteMaterial"
+            name="Remove component">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="hu.bme.aut.procurementofmaterials.handler.CreateNewFixture"
+            commandId="hu.bme.aut.procurementofmaterials.newFixture">
+      </handler>
+      <handler
+            class="hu.bme.aut.procurementofmaterials.handler.CreateNewComplexFixture"
+            commandId="hu.bme.aut.procurementofmaterials.newComplexFixture">
+      </handler>
+      <handler
+            class="hu.bme.aut.procurementofmaterials.handler.CreateNewFinishedProduct"
+            commandId="hu.bme.aut.procurementofmaterials.newFinsihedProduct">
+      </handler>
+      <handler
+            class="hu.bme.aut.procurementofmaterials.handler.CreateNewProductionTarget"
+            commandId="hu.bme.aut.procurementofmaterials.newProductionTarget">
+      </handler>
+      <handler
+            class="hu.bme.aut.procurementofmaterials.handler.DeleteComponent"
+            commandId="hu.bme.aut.procurementofmaterials.deleteMaterial">
+      </handler>
+   </extension>
+
+</plugin>
