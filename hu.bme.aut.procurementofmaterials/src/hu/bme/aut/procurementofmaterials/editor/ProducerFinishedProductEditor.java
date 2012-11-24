@@ -107,8 +107,8 @@ public class ProducerFinishedProductEditor extends FormEditor {
 		
 		IViewPart viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(ProducerFinishedProductView.ID);
 		if (viewPart instanceof ProducerFinishedProductView) {
-			ProducerFinishedProductView finishedProduct = (ProducerFinishedProductView) viewPart;
-			finishedProduct.refresh();
+			ProducerFinishedProductView finishedProductView = (ProducerFinishedProductView) viewPart;
+			finishedProductView.refresh();
 		}
 	}
 

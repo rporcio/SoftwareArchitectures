@@ -101,7 +101,7 @@
             </command>
             <command
                   commandId="hu.bme.aut.procurementofmaterials.deleteMaterial"
-                  icon="icons/minus.png"
+                  icon="icons/DeleteRed1.jpg"
                   label="Remove component"
                   style="push">
             </command>

@@ -10,6 +10,10 @@ import hu.bme.aut.procurementofmaterials.editorinput.ProducerComplexFixtureEdito
 import hu.bme.aut.procurementofmaterials.editorinput.ProducerFinishedProductEditorInput;
 import hu.bme.aut.procurementofmaterials.editorinput.SupplierFixtureEditorInput;
 import hu.bme.aut.procurementofmaterials.service.CdoServiceManager;
+import hu.bme.aut.procurementofmaterials.view.ManagerProductionTargetView;
+import hu.bme.aut.procurementofmaterials.view.ProducerComplexFixtureView;
+import hu.bme.aut.procurementofmaterials.view.ProducerFinishedProductView;
+import hu.bme.aut.procurementofmaterials.view.SupplierFixturesView;
 import model.ComplexFixture;
 import model.FinishedProduct;
 import model.Fixture;
@@ -24,6 +28,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
@@ -64,7 +69,7 @@ public class DeleteComponent extends AbstractHandler {
 					showErrorMessage();
 				}
 			} else if (element instanceof ProductionTarget) {
-				if (1 == UserAuthenticator.getInstance().getUserType()) {
+				if (0 == UserAuthenticator.getInstance().getUserType()) {
 					deleteProductionTarget(element, transaction);
 				} else {
 					showErrorMessage();
@@ -101,6 +106,12 @@ public class DeleteComponent extends AbstractHandler {
 			fixtureEditor.close(false);
 		}
 		
+		IViewPart viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(SupplierFixturesView.ID);
+		if (viewPart instanceof SupplierFixturesView) {
+			SupplierFixturesView fixturesView = (SupplierFixturesView) viewPart;
+			fixturesView.refresh();
+		}
+		
 	}
 
 	private void deleteComplexFixture(Object element, CDOTransaction transaction) throws CommitException {
@@ -113,6 +124,12 @@ public class DeleteComponent extends AbstractHandler {
 		if (editor instanceof ProducerComplexFixtureEditor) {
 			ProducerComplexFixtureEditor complexFixtureEditor = (ProducerComplexFixtureEditor) editor;
 			complexFixtureEditor.close(false);
+		}
+		
+		IViewPart viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(ProducerComplexFixtureView.ID);
+		if (viewPart instanceof ProducerComplexFixtureView) {
+			ProducerComplexFixtureView fixturesView = (ProducerComplexFixtureView) viewPart;
+			fixturesView.refresh();
 		}
 	}
 
@@ -127,6 +144,12 @@ public class DeleteComponent extends AbstractHandler {
 			ProducerFinishedProductEditor finishedProductEditor = (ProducerFinishedProductEditor) editor;
 			finishedProductEditor.close(false);
 		}
+		
+		IViewPart viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(ProducerFinishedProductView.ID);
+		if (viewPart instanceof ProducerFinishedProductView) {
+			ProducerFinishedProductView finishedProductView = (ProducerFinishedProductView) viewPart;
+			finishedProductView.refresh();
+		}
 	}
 
 	private void deleteProductionTarget(Object element, CDOTransaction transaction) throws CommitException {
@@ -139,6 +162,12 @@ public class DeleteComponent extends AbstractHandler {
 		if (editor instanceof ManagerProductionTargetEditor) {
 			ManagerProductionTargetEditor productionTargetEditor = (ManagerProductionTargetEditor) editor;
 			productionTargetEditor.close(false);
+		}
+		
+		IViewPart viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(ManagerProductionTargetView.ID);
+		if (viewPart instanceof ManagerProductionTargetView) {
+			ManagerProductionTargetView targetView = (ManagerProductionTargetView) viewPart;
+			targetView.refresh();
 		}
 	}
 }
